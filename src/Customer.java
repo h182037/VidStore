@@ -9,7 +9,15 @@ public class Customer {
     public Customer(String name) {
         _name = name;
     }
-
+    
+    //SLOC BEFORE = 42
+    //SLOC AFTER = 21
+    
+    //Refactoring affecting SLOC the most was extracting the determineAmount/switch case into polymorphed Movie subclasses' methods.
+    
+    
+    //Complexity Before = 17 - 12 + 2*1 =7
+    //Complexity After = 7 - 5 + 2*1 = 5
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
@@ -29,14 +37,14 @@ public class Customer {
             result += "\t" + eachMovie.getTitle()+ "\t" + String.valueOf(thisAmount) + "\n";
             totalAmount += thisAmount;
         }
-        addFooterLines(result, totalAmount, frequentRenterPoints); //<------
+        result += addFooterLines(totalAmount, frequentRenterPoints); //<------
         return result;
     }
     
     // extracted add footer lines
     //compressed method into just a return line
-    public String addFooterLines(String result, double totalAmount, int frequentRenterPoints) {
-        return result + "Amount owed is " + String.valueOf(totalAmount) + "\n" + "You earned " + 
+    public String addFooterLines(double totalAmount, int frequentRenterPoints) {
+        return "Amount owed is " + String.valueOf(totalAmount) + "\n" + "You earned " + 
         		String.valueOf(frequentRenterPoints) + " frequent renter points";
     }
     
