@@ -15,9 +15,6 @@ public class Customer {
     
     //Refactoring affecting SLOC the most was extracting the determineAmount/switch case into polymorphed Movie subclasses' methods.
     
-    
-    //Complexity Before = 17 - 12 + 2*1 =7
-    //Complexity After = 7 - 5 + 2*1 = 5
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
